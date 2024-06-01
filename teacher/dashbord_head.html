@@ -1,0 +1,172 @@
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> <!-- Importe le module Ionicons pour les navigateurs compatibles -->
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> <!-- Importe le script Ionicons pour les navigateurs non compatibles -->
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap'); /* Importe la police Roboto depuis Google Fonts */
+
+* {
+  font-family: "Roboto", sans-serif; /* Applique la police Roboto à tous les éléments */
+  margin: 0; /* Réinitialise les marges à zéro */
+  padding: 0; /* Réinitialise les rembourrages à zéro */
+  box-sizing: border-box; /* Utilise la boîte de modèles border-box */
+}
+
+:root {
+  --blue:  rgb(204, 23, 23); /* Définit une variable CSS pour la couleur bleue */
+  --white: #fff; /* Définit une variable CSS pour la couleur blanche */
+  --grey: ##f5f5f5; /* Définit une variable CSS pour la couleur grise */
+  --black1: #222; /* Définit une variable CSS pour la couleur noire 1 */
+  --black2: #999; /* Définit une variable CSS pour la couleur noire 2 */
+}
+
+body {
+  min-height: 100vh; /* Définit la hauteur minimale du corps à 100vh (viewport height) */
+  overflow-x: hidden; /* Masque la barre de défilement horizontale */
+}
+
+.container {
+  position: relative; /* Définit la position relative pour le conteneur */
+  width: 100%; /* Définit la largeur du conteneur à 100% */
+}
+
+/*--------navigation-------*/
+
+.navigation {
+  position: fixed; /* Positionne la navigation de façon fixe par rapport à la fenêtre du navigateur */
+  width: 300px; /* Définit la largeur de la navigation à 300px */
+  height: 100%; /* Définit la hauteur de la navigation à 100% */
+  background: var(--blue); /* Utilise la couleur bleue définie dans les variables CSS */
+  border-left: 10px solid var(--blue); /* Ajoute une bordure de gauche de 10px solide de la couleur bleue */
+  transition: .5s; /* Ajoute une transition de 0.5 seconde */
+  overflow: hidden; /* Masque tout contenu dépassant de la navigation */
+}
+
+.navigation.active {
+  width: 80px; /* Lorsque la classe "active" est ajoutée à la navigation, réduit sa largeur à 80px */
+}
+
+.navigation ul {
+  position: absolute; /* Positionne la liste de navigation de façon absolue par rapport à son conteneur */
+  top: 0; /* Place la liste de navigation en haut de son conteneur */
+  left: 0; /* Place la liste de navigation à gauche de son conteneur */
+  width: 100%; /* Définit la largeur de la liste de navigation à 100% */
+}
+
+.navigation ul li {
+  position: relative; /* Définit la position relative pour les éléments de liste */
+  width: 100%; /* Définit la largeur des éléments de liste à 100% */
+  list-style: none; /* Supprime les puces de liste */
+  border-top-left-radius: 30px; /* Ajoute un rayon de bordure supérieur gauche de 30px */
+  border-bottom-left-radius: 30px; /* Ajoute un rayon de bordure inférieur gauche de 30px */
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background: var(--white); /* Change la couleur de fond des éléments de liste lorsqu'ils sont survolés */
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px; /* Ajoute une marge inférieure de 40px à la première élément de liste */
+  pointer-events: none; /* Désactive les événements de pointeur pour le premier élément de liste */
+}
+
+.navigation ul li a {
+  position: relative; /* Définit la position relative pour les liens de navigation */
+  display: block; /* Transforme les liens en éléments de bloc */
+  width: 100%; /* Définit la largeur des liens à 100% */
+  display: flex; /* Utilise la disposition flexbox pour les liens */
+  text-decoration: none; /* Supprime la décoration de texte des liens */
+  color: var(--white); /* Utilise la couleur blanche définie dans les variables CSS */
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue); /* Change la couleur du texte des liens lorsqu'ils sont survolés */
+}
+
+.navigation ul li a .icon {
+  position: relative; /* Définit la position relative pour les icônes */
+  display: block; /* Transforme les icônes en éléments de bloc */
+  min-width: 60px; /* Définit la largeur minimale des icônes à 60px */
+  height: 60px; /* Définit la hauteur des icônes à 60px */
+  line-height: 75px; /* Définit la hauteur de ligne des icônes à 75px */
+  text-align: center; /* Centre le texte des icônes */
+}
+
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem; /* Définit la taille de police des icônes à 1.75rem */
+}
+
+.navigation ul li a .title {
+  position: relative; /* Définit la position relative pour les titres */
+  display: block; /* Transforme les titres en éléments de bloc */
+  padding: 0 10px; /* Ajoute un rembourrage de 0 sur les côtés et de 10px en haut et en bas */
+  height: 60px; /* Définit la hauteur des titres à 60px */
+  line-height: 60px; /* Définit la hauteur de ligne des titres à 60px */
+  text-align: start; /* Aligne les titres à gauche */
+  white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+}
+
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: ""; /* Ajoute un contenu vide avant les liens lorsqu'ils sont survolés */
+  position: absolute; /* Définit la position absolue pour les pseudo-éléments ::before */
+  right: 0; /* Place les pseudo-éléments ::before à droite */
+  top: -50px; /* Déplace les pseudo-éléments ::before vers le haut de 50px */
+  width: 50px; /* Définit la largeur des pseudo-éléments ::before à 50px */
+  height: 50px; /* Définit la hauteur des pseudo-éléments ::before à 50px */
+  border-radius: 50%; /* Ajoute un rayon de bordure de 50% aux pseudo-éléments ::before */
+  pointer-events: none; /* Désactive les événements de pointeur pour les pseudo-éléments ::before */
+  box-shadow: 35px 35px 0 10px var(--white); /* Ajoute une ombre de boîte aux pseudo-éléments ::before */
+}
+
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: ""; /* Ajoute un contenu vide après les liens lorsqu'ils sont survolés */
+  position: absolute; /* Définit la position absolue pour les pseudo-éléments ::after */
+  right: 0; /* Place les pseudo-éléments ::after à droite */
+  bottom: -50px; /* Déplace les pseudo-éléments ::after vers le bas de 50px */
+  width: 50px; /* Définit la largeur des pseudo-éléments ::after à 50px */
+  height: 50px; /* Définit la hauteur des pseudo-éléments ::after à 50px */
+  border-radius: 50%; /* Ajoute un rayon de bordure de 50% aux pseudo-éléments ::after */
+  pointer-events: none; /* Désactive les événements de pointeur pour les pseudo-éléments ::after */
+  box-shadow: 35px -35px 0 10px var(--white); /* Ajoute une ombre de boîte aux pseudo-éléments ::after */
+}
+
+.topbar {
+  width: 100%; /* Définit la largeur de la barre supérieure à 100% */
+  height: 60px; /* Définit la hauteur de la barre supérieure à 60px */
+  display: flex; /* Utilise la disposition flexbox pour la barre supérieure */
+  justify-content: space-between; /* Répartit l'espace entre les éléments de la barre supérieure */
+  align-items: center; /* Centre les éléments de la barre supérieure verticalement */
+  padding: 0 10px; /* Ajoute un rembourrage de 0 sur les côtés de la barre supérieure et de 10px en haut et en bas */
+}
+
+.toggle {
+  position: relative; /* Définit la position relative pour le bouton de basculement */
+  width: 60px; /* Définit la largeur du bouton de basculement à 60px */
+  height: 60px; /* Définit la hauteur du bouton de basculement à 60px */
+  display: flex; /* Utilise la disposition flexbox pour le bouton de basculement */
+  justify-content: center; /* Centre le contenu du bouton de basculement horizontalement */
+  align-items: center; /* Centre le contenu du bouton de basculement verticalement */
+  font-size: 2.25rem; /* Définit la taille de police du bouton de basculement à 2.25rem */
+  cursor: pointer; /* Définit le curseur de la souris en pointeur pour le bouton de basculement */
+}
+
+.main {
+  position: absolute; /* Positionne le contenu principal de façon absolue par rapport au conteneur */
+  width: calc(100% - 300px); /* Définit la largeur du contenu principal à 100% moins 300px */
+  left: 300px; /* Déplace le contenu principal à droite de 300px */
+  min-height: 100vh; /* Définit la hauteur minimale du contenu principal à 100vh */
+  background: var(--white); /* Utilise la couleur blanche définie dans les variables CSS comme couleur de fond */
+  transition: .5s; /* Ajoute une transition de 0.5 seconde */
+  display: flex; /* Utilise la disposition flexbox pour le contenu principal */
+  flex-direction: column; /* Dispose le contenu principal en colonne */
+}
+
+.main.active {
+  width: calc(100% - 80px); /* Lorsque la classe "active" est ajoutée au contenu principal, réduit sa largeur à 100% moins 80px */
+  left: 80px; /* Déplace le contenu principal à droite de 80px */
+}
+
+</style>

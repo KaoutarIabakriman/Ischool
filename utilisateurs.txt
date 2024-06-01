@@ -1,0 +1,8 @@
+professeur:
+	prof@gmail.com     mot de passe: admin123
+
+etudiant:
+	etudiant@gmail.com	mot de passe: admin
+
+administrateur:
+	admin		mot de passe: admin     

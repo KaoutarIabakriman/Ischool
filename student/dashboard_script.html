@@ -1,0 +1,31 @@
+<script>
+  // Select all list items in the navigation menu
+  let list = document.querySelectorAll(".navigation li");
+
+  // Function to add 'hovered' class to the currently active list item
+  function activeLink() {
+    // Remove 'hovered' class from all list items
+    list.forEach(item => {
+      item.classList.remove("hovered");
+    });
+    // Add 'hovered' class to the list item that triggered the event (mouseover)
+    this.classList.add("hovered");
+  }
+
+  // Attach mouseover event to each list item to trigger activeLink function
+  list.forEach(item => item.addEventListener("mouseover", activeLink));
+
+  // Toggle for mobile view or smaller screens
+  // Select DOM elements: the toggle button, navigation menu, and main content area
+  let toggle = document.querySelector(".toggle");
+  let navigation = document.querySelector(".navigation");
+  let main = document.querySelector(".main");
+
+  // Define what happens when the toggle button is clicked
+  toggle.onclick = function() {
+    // Toggle 'active' class on both navigation and main content
+    // This typically controls the visibility or expanded state of the navigation menu
+    navigation.classList.toggle("active");
+    main.classList.toggle("active");
+  }
+</script>

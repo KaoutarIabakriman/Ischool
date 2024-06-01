@@ -1,0 +1,27 @@
+<script>
+  // Ajouter la classe "hovered" à l'élément de liste sélectionné lorsqu'il est survolé
+let list = document.querySelectorAll(".navigation li");
+
+function activeLink() {
+// Supprimer la classe "hovered" de tous les éléments de liste
+list.forEach(item => {
+  item.classList.remove("hovered");
+});
+// Ajouter la classe "hovered" à l'élément survolé
+this.classList.add("hovered");
+}
+
+// Ajouter un écouteur d'événement de survol à chaque élément de liste
+list.forEach(item => item.addEventListener("mouseover", activeLink));
+
+// Basculer le menu
+let toggle = document.querySelector(".toggle"); // Sélectionner l'icône de bascule
+let navigation = document.querySelector(".navigation"); // Sélectionner la barre de navigation
+let main = document.querySelector(".main"); // Sélectionner la section principale
+
+toggle.onclick = function() {
+// Ajouter ou supprimer la classe "active" à la barre de navigation et à la section principale
+navigation.classList.toggle("active");
+main.classList.toggle("active");
+}
+</script>

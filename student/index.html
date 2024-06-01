@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Inclusion de la bibliothèque Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Inclusion de la feuille de style CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Animated Login Page</title>
+</head>
+
+<body>
+    <!-- Conteneur principal -->
+    <div class="container" id="container">
+        <!-- Formulaire d'inscription -->
+        <div class="form-container sign-up">
+            <form action="signup.php" method="post">
+                <h1>Créer un compte</h1>
+                <input type="text" placeholder="Prénom" name="firstname" required />
+                <input type="text" placeholder="Nom" name="lastname" required />
+                <input type="email" placeholder="Email" name="email" required />
+                <input type="password" placeholder="Mot de passe" name="password" required />
+                <button>S'inscrire</button>
+            </form>
+        </div>
+        <!-- Formulaire de connexion -->
+        <div class="form-container sign-in">
+            <form action="login.php" method="post">
+                <h1>Se connecter</h1>
+                <input type="email" placeholder="Email" name="email" required />
+                <input type="password" placeholder="Mot de passe" name="password" required />
+                <button>Se connecter</button>
+            </form>
+        </div>
+        <!-- Panneau de basculement entre les formulaires -->
+        <div class="toggle-container">
+            <div class="toggle">
+                <!-- Panneau de connexion -->
+                <div class="toggle-panel toggle-left">
+                    <h1>Bienvenue</h1>
+                    <p>Entrez vos coordonnées personnelles pour utiliser toutes les fonctionnalités du site</p>
+                    <button class="hidden" id="login">Se connecter</button>
+                </div>
+                <!-- Panneau d'inscription -->
+                <div class="toggle-panel toggle-right">
+                    <h1>Bonjour, ami !</h1>
+                    <p>
+                        Inscrivez-vous avec vos coordonnées personnelles pour utiliser toutes les fonctionnalités du site
+                    </p>
+                    <button class="hidden" id="register">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Inclusion du script JavaScript -->
+<script src="main.js"></script>
+
+</html>

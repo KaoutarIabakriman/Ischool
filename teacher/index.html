@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Inclure les icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Inclure le fichier CSS personnalisé -->
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Projet Web</title>
+</head>
+
+<body>
+    <!-- Conteneur principal -->
+    <div class="container" id="container">
+        <!-- Formulaire d'inscription -->
+        <div class="form-container sign-up">
+            <form action="singup.php" method="post">
+                <h1>Créer un compte</h1>
+                <!-- Champ pour le prénom -->
+                <input type="text" placeholder="Prénom" name="firstname" required/>
+                <!-- Champ pour le nom -->
+                <input type="text" placeholder="Nom" name="lastname" required/>
+                <!-- Champ pour l'email -->
+                <input type="email" placeholder="Email" name="email" required />
+                <!-- Champ pour le mot de passe -->
+                <input type="password" placeholder="Mot de passe" name="password" required/>
+                <!-- Bouton pour s'inscrire -->
+                <button>S'inscrire</button>
+            </form>
+        </div>
+        <!-- Formulaire de connexion -->
+        <div class="form-container sign-in">
+            <form action="login.php" method="post">
+                <h1>Se connecter</h1>
+                <!-- Champ pour l'email -->
+                <input type="email" placeholder="Email" name="email" required/>
+                <!-- Champ pour le mot de passe -->
+                <input type="password" placeholder="Mot de passe" name="password" required/>
+                <!-- Bouton pour se connecter -->
+                <button>Se connecter</button>
+            </form>
+        </div>
+        <!-- Conteneur de bascule -->
+        <div class="toggle-container">
+            <!-- Bascule pour changer entre les formulaires d'inscription et de connexion -->
+            <div class="toggle">
+                <!-- Panneau de bascule vers la gauche (connexion) -->
+                <div class="toggle-panel toggle-left">
+                    <h1>Content de te revoir!</h1>
+                    <p>Entrez vos informations personnelles pour utiliser toutes les fonctionnalités du site</p>
+                    <!-- Bouton caché pour basculer vers le formulaire de connexion -->
+                    <button class="hidden" id="login">Se connecter</button>
+                </div>
+                <!-- Panneau de bascule vers la droite (inscription) -->
+                <div class="toggle-panel toggle-right">
+                    <h1>Bonjour!</h1>
+                    <p>
+                        Inscrivez-vous avec vos informations personnelles pour utiliser toutes les fonctionnalités du site
+                    </p>
+                    <!-- Bouton caché pour basculer vers le formulaire d'inscription -->
+                    <button class="hidden" id="register">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Inclure le fichier JavaScript principal -->
+<script src="main.js"></script>
+
+</html>

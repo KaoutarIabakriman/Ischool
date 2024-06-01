@@ -1,0 +1,190 @@
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+   /* Importation de la police et réinitialisation des styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+* {
+  font-family: "Roboto", sans-serif; /* Utilisation de la police Roboto pour tous les éléments */
+  margin: 0; /* Réinitialisation de la marge */
+  padding: 0; /* Réinitialisation du padding */
+  box-sizing: border-box; /* Boîte de modèles avec modèle de bordure */
+}
+
+/* Définition des variables de couleur */
+:root {
+  --blue: rgb(33, 33, 212); /* Définition d'une variable pour le bleu */
+  --white: #fff; /* Définition d'une variable pour le blanc */
+  --grey: ##f5f5f5; /* Définition d'une variable pour le gris */
+  --black1: #222; /* Définition d'une variable pour le noir 1 */
+  --black2: #999; /* Définition d'une variable pour le noir 2 */
+}
+
+/* Styles du corps de la page */
+body {
+  min-height: 100vh; /* Hauteur minimale du corps égale à 100 % de la vue */
+  overflow-x: hidden; /* Masquage du défilement horizontal */
+}
+
+/* Styles de la classe .container */
+.container {
+  position: relative; /* Position relative pour les éléments enfants positionnés absolument */
+  width: 100%; /* Largeur de la container à 100 % */
+}
+
+/* Styles de la barre de navigation */
+.navigation {
+  position: fixed; /* Position fixe pour rester en place lors du défilement */
+  width: 300px; /* Largeur par défaut de la barre de navigation */
+  height: 100%; /* Hauteur de la barre de navigation égale à 100 % de la vue */
+  background: var(--blue); /* Couleur de fond bleue */
+  border-left: 10px solid var(--blue); /* Bordure gauche de 10px de couleur bleue */
+  transition: .5s; /* Transition fluide sur les changements de largeur */
+  overflow: hidden; /* Masquage du contenu débordant */
+}
+
+.navigation.active {
+  width: 80px; /* Largeur réduite de la barre de navigation lorsqu'elle est active */
+}
+
+/* Styles de la liste de navigation */
+.navigation ul {
+  position: absolute; /* Position absolue pour que la liste s'adapte à la hauteur de la navigation */
+  top: 0; /* Décalage de 0 par rapport au haut de la navigation */
+  left: 0; /* Décalage de 0 par rapport à la gauche de la navigation */
+  width: 100%; /* Largeur de la liste égale à 100 % de la navigation */
+}
+
+/* Styles des éléments de la liste de navigation */
+.navigation ul li {
+  position: relative; /* Position relative pour définir le contexte d'empilement des éléments fils */
+  width: 100%; /* Largeur de chaque élément de la liste égale à 100 % */
+  list-style: none; /* Suppression des puces de liste */
+  border-top-left-radius: 30px; /* Arrondi de la bordure supérieure gauche */
+  border-bottom-left-radius: 30px; /* Arrondi de la bordure inférieure gauche */
+}
+
+/* Styles lorsque survolé ou actif */
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background: var(--white); /* Fond blanc lors du survol ou de l'activation */
+}
+
+/* Styles du premier élément de la liste de navigation */
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px; /* Marge inférieure de 40px pour l'élément de connexion */
+  pointer-events: none; /* Désactivation des événements de pointeur pour l'élément de connexion */
+}
+
+/* Styles des liens de la liste de navigation */
+.navigation ul li a {
+  position: relative; /* Position relative pour les éléments enfants positionnés absolument */
+  display: block; /* Affichage en bloc pour occuper toute la largeur */
+  width: 100%; /* Largeur des liens égale à 100 % de l'élément parent */
+  display: flex; /* Affichage en flex pour aligner les éléments enfants */
+  text-decoration: none; /* Suppression du soulignement des liens */
+  color: var(--white); /* Couleur du texte en blanc */
+}
+
+/* Styles des liens de la liste de navigation lorsqu'ils sont survolés ou actifs */
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue); /* Changement de la couleur du texte en bleu lors du survol ou de l'activation */
+}
+
+/* Styles de l'icône des liens de la liste de navigation */
+.navigation ul li a .icon {
+  position: relative; /* Position relative pour les éléments enfants positionnés absolument */
+  display: block; /* Affichage en bloc pour occuper toute la largeur */
+  min-width: 60px; /* Largeur minimale de l'icône de 60px */
+  height: 60px; /* Hauteur de l'icône de 60px */
+  line-height: 75px; /* Hauteur de ligne de 75px pour centrer l'icône verticalement */
+  text-align: center; /* Centrage horizontal de l'icône */
+}
+
+/* Styles de l'icône ion-icon des liens de la liste de navigation */
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem; /* Taille de police de 1,75rem pour l'icône */
+}
+
+/* Styles du titre des liens de la liste de navigation */
+.navigation ul li a .title {
+  position: relative; /* Position relative pour les éléments enfants positionnés absolument */
+  display: block; /* Affichage en bloc pour occuper toute la largeur */
+  padding: 0 10px; /* Rembourrage de 0 sur les côtés de 10px en haut et en bas */
+  height: 60px; /* Hauteur de l'élément de titre de 60px */
+  line-height: 60px; /* Hauteur de ligne de 60px pour centrer verticalement le texte */
+  text-align: start; /* Alignement du texte à gauche */
+  white-space: nowrap; /* Empêche le texte de passer à la ligne */
+}
+
+/* Styles des pseudos-éléments ::before et ::after pour les effets de transition lors du survol */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: ""; /* Contenu vide pour les pseudos-éléments */
+  position: absolute; /* Position absolue pour créer les pseudos-éléments à l'intérieur de chaque lien */
+  right: 0; /* Décalage de 0 par rapport à la droite */
+  top: -50px; /* Décalage de 50px vers le haut pour le pseudos-élément ::before */
+  width: 50px; /* Largeur de 50px pour le pseudos-élément ::before */
+  height: 50px; /* Hauteur de 50px pour le pseudos-élément ::before */
+  border-radius: 50%; /* Bordure arrondie à 50 % pour créer un cercle */
+  pointer-events: none; /* Désactivation des événements de pointeur pour les pseudos-éléments */
+  box-shadow: 35px 35px 0 10px var(--white); /* Ombre portée pour l'effet de transition */
+}
+
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: ""; /* Contenu vide pour les pseudos-éléments */
+  position: absolute; /* Position absolue pour créer les pseudos-éléments à l'intérieur de chaque lien */
+  right: 0; /* Décalage de 0 par rapport à la droite */
+  bottom: -50px; /* Décalage de 50px vers le bas pour le pseudos-élément ::after */
+  width: 50px; /* Largeur de 50px pour le pseudos-élément ::after */
+  height: 50px; /* Hauteur de 50px pour le pseudos-élément ::after */
+  border-radius: 50%; /* Bordure arrondie à 50 % pour créer un cercle */
+  pointer-events: none; /* Désactivation des événements de pointeur pour les pseudos-éléments */
+  box-shadow: 35px -35px 0 10px var(--white); /* Ombre portée pour l'effet de transition */
+}
+
+/* Styles de la barre supérieure */
+.topbar {
+  width: 100%; /* Largeur de la barre supérieure égale à 100 % */
+  height: 60px; /* Hauteur de la barre supérieure de 60px */
+  display: flex; /* Affichage en flex pour aligner les éléments */
+  justify-content: space-between; /* Espace uniformément entre les éléments de la barre supérieure */
+  align-items: center; /* Alignement vertical au centre des éléments */
+  padding: 0 10px; /* Rembourrage de 0 sur les côtés de 10px */
+}
+
+/* Styles du bouton de basculement */
+.toggle {
+  position: relative; /* Position relative pour positionner l'icône à l'intérieur */
+  width: 60px; /* Largeur du bouton de basculement de 60px */
+  height: 60px; /* Hauteur du bouton de basculement de 60px */
+  display: flex; /* Affichage en flex pour centrer l'icône */
+  justify-content: center; /* Centrage horizontal de l'icône */
+  align-items: center; /* Centrage vertical de l'icône */
+  font-size: 2.25rem; /* Taille de police de 2.25rem pour l'icône */
+  cursor: pointer; /* Curseur pointeur pour indiquer l'interactivité */
+}
+
+/* Styles de la classe principale .main */
+.main {
+  position: absolute; /* Position absolue pour positionner la section principale */
+  width: calc(100% - 300px); /* Largeur égale à 100 % moins la largeur de la barre de navigation */
+  left: 300px; /* Décalage à gauche égal à la largeur de la barre de navigation */
+  min-height: 100vh; /* Hauteur minimale de 100 % de la vue */
+  background: var(--white); /* Fond blanc pour la section principale */
+  transition: .5s; /* Transition fluide sur les changements de largeur */
+  display: flex; /* Affichage en flex pour aligner les éléments enfants */
+  flex-direction: column; /* Alignement vertical des éléments enfants */
+}
+
+/* Styles de la classe principale .main lorsqu'elle est active */
+.main.active {
+  width: calc(100% - 80px); /* Largeur égale à 100 % moins la largeur réduite de la barre de navigation */
+  left: 80px; /* Décalage à gauche égal à la largeur réduite de la barre de navigation */
+}
+
+
+  </style>
